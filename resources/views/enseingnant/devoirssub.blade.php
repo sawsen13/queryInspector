@@ -27,7 +27,7 @@
     <tr>
         <th>Nom</th>
         <th>Prénom</th>
-        <th>Task submitted or not</th>
+        <th>Devoir soumis</th>
         <th>Groupe</th>
         <th>Note</th>
         <th>Actions</th>
@@ -63,7 +63,7 @@
         <td>
             @if ($evaluation)
                 @if ($evaluation->soumis)
-                <a href="" class="btn btn-primary">Analyser & noter</a>
+                <a href="" class="btn btn-primary">Analyser</a>
 
                     <a href="{{ route('voir.code', $evaluation->id_ev) }}" class="btn btn-primary">Voir code</a>
                 @endif

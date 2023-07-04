@@ -45,7 +45,7 @@ use Carbon\Carbon;
     @if($d->file)
         <a href="{{ route('download-devoir', $d->id_dv) }}" class="btn btn-primary">Telecharger</a>
     @else
-        <span class="text-muted">No file</span>
+        <span class="text-muted">Aucun fichier</span>
     @endif
 </td>
 
@@ -65,8 +65,9 @@ use Carbon\Carbon;
 </label>
                             </div>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                                <button class="btn btn-secondary" type="button" onclick="document.getElementById('submit-form').reset();">Cancel</button>
+                                <button class="btn btn-primary" type="submit">Soumettre
+</button>
+                                <button class="btn btn-secondary" type="button" onclick="document.getElementById('submit-form').reset();">Annuler</button>
                             </div>
                         </div>
                     </form>
@@ -81,8 +82,8 @@ use Carbon\Carbon;
                                 <label class="custom-file-label" for="file"></label>
                             </div>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">Resubmit</button>
-                                <button class="btn btn-secondary" type="button" onclick="document.getElementById('resubmit-form').reset();">Cancel</button>
+                                <button class="btn btn-primary" type="submit">Resoumettre</button>
+                                <button class="btn btn-secondary" type="button" onclick="document.getElementById('resubmit-form').reset();">Annuler</button>
                             </div>
                         </div>
                     </form>

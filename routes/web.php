@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
 /***********************Les promotions*********************/
 //Liste des promotions
 Route::get('/promotions', 'App\Http\Controllers\PromotionController@index')->name('promotion.index');
+Route::get('/promotions-a', 'App\Http\Controllers\PromotionController@indexa')->name('promotion.indexa');
+
 //ajouter une promotion
 Route::get('/createpr', 'App\Http\Controllers\PromotionController@create');
 Route::post('promotions', 'App\Http\Controllers\PromotionController@store')->name('promotion.store');
@@ -74,6 +76,9 @@ Route::get('/devoirssub/{id_dev}', 'App\Http\Controllers\DevoirController@devoir
 
 //liste des etudiants
 Route::get('/etudiants/{id_pr}', 'App\Http\Controllers\PromotionController@showStudents')->name('etudiants');
+//admin
+Route::get('/etudiants-a/{id_pr}', 'App\Http\Controllers\PromotionController@showStudentsa')->name('etudiants-a');
+
 //supprimer un etudiant
 Route::post('/etudiants/{id}', 'App\Http\Controllers\EtudiantController@supprimer')->name('etudiant.supp');
 

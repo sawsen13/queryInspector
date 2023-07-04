@@ -23,12 +23,21 @@ class PromotionController extends Controller
         return view('enseingnant.promotions', ['promotions' => $listPromo]);
     }
 
+    public function indexa()
+    {
+       
+            $listPromo = Promotion::get();
+        
+ 
+        return view('admin.promotions', ['promotions' => $listPromo]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('enseingnant.promotions');
+        return view('admin.promotions');
     }
 
     /**
@@ -57,7 +66,7 @@ class PromotionController extends Controller
         $groupe->save();
     }
 
-  return redirect()->route('promotion.index')->with('success', 'Data saved');
+  return redirect()->route('promotion.indexa')->with('success', 'Data saved');
     }
 
     /**
@@ -68,6 +77,14 @@ class PromotionController extends Controller
         $etudiants = User::where('promo', $id_pr)->get();
 
         return view('enseingnant.ListeDesEtudiants', compact('etudiants'));
+
+
+    }
+    public function showStudentsa($id_pr)
+    {
+        $etudiants = User::where('promo', $id_pr)->get();
+
+        return view('admin.ListeDesEtudiants', compact('etudiants'));
 
 
     }

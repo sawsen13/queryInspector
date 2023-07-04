@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analyseur</title>
+    <title>QueryInspector</title>
 
     <link rel="stylesheet" href="assets/css/main/app.css" />
     <link rel="stylesheet" href="assets/css/main/app-dark.css" />
@@ -114,7 +114,7 @@
               </li>-->
 
               <li class="sidebar-item ">
-                <a href="/promotions" class="sidebar-link">
+                <a href="/promotions-a" class="sidebar-link">
                   <i class="bi bi-stack"></i>
                   <span>Promotions</span>
                 </a>
@@ -123,13 +123,7 @@
               
 
             
-              <li class="sidebar-item ">
-                <a href="/devoirs" class="sidebar-link">
-                  <i class="bi bi-journal-check"></i>
-                  <span>Devoirs</span>
-                </a>
             
-              </li>
 
               <li class="sidebar-item">
   <form action="{{ route('logout') }}" method="POST">

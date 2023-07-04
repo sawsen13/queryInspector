@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role',  ['etudiant','enseignant']);
+            $table->enum('role',  ['etudiant','enseignant','admin']);
             $table->boolean('nouveau_devoir')->default(false);
             $table->rememberToken();
             $table->timestamps();
@@ -27,6 +27,7 @@ return new class extends Migration
         });
 
         DB::table('users')->insert(array('name'=>'enseignant','prenom'=>'enseignant','email'=>'enseignant@gmail.com', 'password'=>bcrypt('enseignant123'),'role'=>'enseignant'));
+        DB::table('users')->insert(array('name'=>'admin','prenom'=>'admin','email'=>'admin@gmail.com', 'password'=>bcrypt('admin123'),'role'=>'admin'));
 
     }
 

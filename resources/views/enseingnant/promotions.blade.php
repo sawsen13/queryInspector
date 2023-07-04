@@ -19,10 +19,10 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary form-little-squirrel-control"
+         <!-- <a class="btn btn-primary form-little-squirrel-control"
                     data-bs-toggle="modal" data-bs-target="#wnd" aria-haspopup="true" aria-expanded="false" role="button"
                      v-pre> <i class="fa fa-plus text-success"></i> Ajouter une Promotion
-                   </a>
+                   </a>-->
           <section class="section">
             <div class="card">
               <div class="row grid-margin">
@@ -46,7 +46,7 @@
                       <td>{{$promotion->libelle_pr}}</td>
                       <td>{{$promotion->groupes()->count()}}</td>
                       <td>{{$promotion->users()->where('role', 'etudiant')->count()}}</td>
-                      <td>
+                     <td>
                       <a href="{{ route('etudiants', ['id_pr' => $promotion->id_pr]) }}">
   <button class="btn btn-success mr-1" style="background-color: #28a745; color: #fff; border-color: #28a745;">
     <i class="fa fa-eye"></i> Voir
@@ -54,10 +54,10 @@
 </a>     
 
 
-                                      <form method="POST" action="{{ route('promotions.supp', $promotion->id_pr) }}">
+                                   <!--    <form method="POST" action="{{ route('promotions.supp', $promotion->id_pr) }}">
                                         @csrf
                                         <button type="submit" class="btn btn-danger delete" title='Delete'><i class="fa fa-times">Supprimer</i></button>
-                                    </form>
+                                    </form>-->
 
 
 </td>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card-header">{{ __("S'inscrire") }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Addresse Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmer Mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -80,7 +80,7 @@
 
                             <div class="col-md-6">
                             <select name="promotion" class="form-control @error('promotion') is-invalid @enderror" onchange="updateGroupes()">
-    <option value="">-- Select a promotion --</option>
+    <option value="">-- Selectionner une promotion --</option>
     @foreach($promotions as $promotion)
     <option value="{{ $promotion->id_pr }}" data-groupes="{{ $promotion->groupes->pluck('id_gr')->implode(',') }}">{{ $promotion->libelle_pr }}</option>
 @endforeach
@@ -99,7 +99,7 @@
     <label for="groupe" class="col-md-4 col-form-label text-md-end">{{ __('Groupe') }}</label>
     <div class="col-md-6">
         <select name="groupe" class="form-control @error('groupe') is-invalid @enderror">
-            <option value="">-- Select a groupe --</option>
+            <option value="">-- Selectionner un groupe --</option>
             @if(isset($groupes))
                 @foreach($groupes as $groupe)
                 <option value="{{ $groupe->num_gr }}" @if(old('groupe')==$groupe->id_gr) selected="selected" @endif>{{ $groupe->num_gr }}</option>
@@ -122,7 +122,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __("S'inscrire") }}
                                 </button>
                             </div>
                         </div>

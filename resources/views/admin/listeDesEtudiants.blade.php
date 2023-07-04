@@ -1,5 +1,5 @@
 
-@extends('layouts.MenuEnseignant')
+@extends('layouts.MenuAdmin')
 @section('content')
 <header class="mb-3">
           <a href="#" class="burger-btn d-block d-xl-none">
@@ -11,52 +11,46 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Devoirs</h3>
+                <h3>Liste des etudiants</h3>
                 
               </div>
-              
+              <div class="col-12 col-md-6 order-md-2 order-first">
+               
+              </div>
             </div>
           </div>
           <a class="btn btn-primary form-little-squirrel-control"
                     data-bs-toggle="modal" data-bs-target="#wnd" aria-haspopup="true" aria-expanded="false" role="button"
-                     v-pre> <i class="fa fa-plus text-success"></i> Ajouter un devoir
+                     v-pre> <i class="fa fa-plus text-success"></i> Ajouter un etudiant
                    </a>
           <section class="section">
             <div class="card">
               <div class="row grid-margin">
-                  
-                   
+                 
+                    
                 </div>
               <div class="card-body">
                 <table class="table table-striped" id="table1">
                   <thead>
                     <tr>
-                      <th>Num de TP</th>
-                      <th>date de début</th>
-                      <th>date de fin</th>
-                      <th>Promotion</th>
-
+                      <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Email</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($devoirs as $devoir)
+                  @foreach($etudiants as $etudiant)
+
                     <tr>
-                      <td>{{$devoir->num_tp}}</td>
-                      <td>{{$devoir->date_debut}}</td>
-                      <td>{{$devoir->date_fin}}</td>
-                      <td>{{ optional($devoir->promotion)->libelle_pr }}</td>
+                      <td>{{$etudiant->name}}</td>
+                      <td>{{$etudiant->prenom}}</td>
+                      <td>{{$etudiant->email}}</td>
                       <td>
-                      <a href="{{ route('devoirssub', ['id_dev' => $devoir->id_dv]) }}" @click.prevent>
-  <button class="btn btn-success mr-1" style="background-color: #28a745; color: #fff; border-color: #28a745;">
-    <i class="fa fa-eye"></i> Voir
-  </button>
-</a><form method="POST" action="{{ route('devoirs.supp', $devoir->id_dv) }}">
+                      <form method="POST" action="{{ route('etudiant.supp', $etudiant->id) }}">
                                         @csrf
                                         <button type="submit" class="btn btn-danger delete" title='Delete'><i class="fa fa-times">Supprimer</i></button>
-                                    </form>
-
-                      </td>
+                                    </form>                      </td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -80,42 +74,55 @@
                     <div class="row align-items-center mb-3">
                     
                       
-                    <form class="needs-validation" method="POST" action="{{ route('devoir.store') }}" novalidate enctype="multipart/form-data">
+             <form class="needs-validation" method="POST" action="{{ route('promotion.store') }}" novalidate>
       @csrf
         
        <fieldset>
 
                       <div class="form-group">
-                        <label for="firstname">Num de TP</label>
-                        <input id="lastname" class="form-control" type="number" name="num_tp" required>
-
+                        <label for="lastname">Nom:</label>
+                        <input id="lastname" class="form-control" type="text" name="nom" required>
                       </div>
                       <div class="form-group">
-  <label for="start_date">Date de début</label>
-  <input id="start_date" class="form-control" type="datetime-local" name="date_debut" required>
-</div>
-<div class="form-group">
-  <label for="start_date">Date de fin</label>
-  <input id="start_date" class="form-control" type="datetime-local" name="date_fin" required>
-</div>
-
-<div class="form-group">
-  <label for="pdf_file">Choisir un fichier</label>
-  <input type="file" class="form-control-file" id="pdf_file" name="file" accept=".pdf,.doc,.docx">
-</div>
+                        <label for="lastname">Prénom:</label>
+                        <input id="lastname" class="form-control" type="text" name="prenom" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="lastname">Adresse Email:</label>
+                        <input id="lastname" class="form-control" type="email" name="email" required>
+                      </div>
 
                       <div class="form-group">
-                        <label for="lastname">Pour :</label>
-                       
-
-                       <select name="promo" >
-    <option value="">-- Selectionner une promotion --</option>
-    @foreach($promotions as $promotion)
-    <option value="{{ $promotion->id_pr }}" >{{ $promotion->libelle_pr }}</option>
-@endforeach
-
-</select>
+                        <label for="lastname">Mot de passe:</label>
+                        <input id="lastname" class="form-control" type="password" name="password" required>
                       </div>
+
+                      <div class="form-group">
+    <label for="promotion">Promotion:</label>
+    <select id="promotion" class="form-control" name="promo" required>
+        <option value="">-- Selectionner une promotion --</option>
+        <option value="promotion1">Promotion 1</option>
+        <option value="promotion2">Promotion 2</option>
+        <option value="promotion3">Promotion 3</option>
+    </select>
+</div>
+
+
+                     
+
+
+   
+
+                      <div class="form-group">
+    <label for="groupe">Groupe:</label>
+    <select id="groupe" class="form-control" name="groupe" required>
+        <option value="">-- Selectionner un groupe --</option>
+        <option value="groupe1">Groupe 1</option>
+        <option value="groupe2">Groupe 2</option>
+        <option value="groupe3">Groupe 3</option>
+    </select>
+</div>
+
                       
                       
                       <div class="input-group-icon ms-3 mb-3 mt-7">
@@ -151,6 +158,13 @@
       </div>
        
 
+   <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/pages/jquery.js"></script>
+
+
     <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="assets/js/pages/simple-datatables.js"></script>
+
+    
     @endsection

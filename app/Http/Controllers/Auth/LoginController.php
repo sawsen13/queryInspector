@@ -40,6 +40,9 @@ class LoginController extends Controller
             if (auth()->user()->role == 'enseignant') {
                 return '/promotions';
             }
+            if (auth()->user()->role == 'admin') {
+            return '/promotions-a';
+        }
             return '/profile';
         }
 
